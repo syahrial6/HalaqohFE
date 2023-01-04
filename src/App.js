@@ -1,56 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+
+import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Beranda from "./pages/Beranda";
+import Guru from "./pages/Guru";
+import Dashboard from "./pages/Dashboard";
+import Tambah from "./pages/Tambah";
+import Edit from "./pages/Edit";
+import TambahUser from "./pages/TambahUser";
+import User from "./pages/User";
+import EditUser from "./pages/EditUser";
+import ListWali from "./pages/ListWali";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/beranda" element={<Beranda/>} />
+        <Route path="/view/:id" element={<ListWali/>} />
+        <Route path="/dashboard/:id" element={<Guru/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/tambah_user" element={<TambahUser/>} />
+        <Route path="/user" element={<User/>} />
+        <Route path="/dashboard/:id/tambah" element={<Tambah/>} />
+        <Route path="/dashboard/edit/:uuid" element={<Edit/>} />
+        <Route path="/dashboard/edit_guru/:uuid" element={<EditUser/>} />
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }

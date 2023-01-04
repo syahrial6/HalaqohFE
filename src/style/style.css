@@ -1,0 +1,109 @@
+
+/* Caraosel css */
+.carousel-inner {
+    max-height: 600px;
+    
+  }
+img{
+    max-height: 600px;
+    object-fit: cover;
+}
+  
+  .carousel-indicators img {
+    max-width: 100px;
+  }
+.mb-2{
+    z-index: 3;
+    position: relative;
+    margin: auto;
+    align-content: center;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Login form css */
+
+.Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .Auth-form {
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .Auth-form-content {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+  
+  .Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+  }
+
+/* Program unggulan css */
+.program_unggulan {
+    font-size: 45px;
+    font-weight: bold;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.induk_unggul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.icon {
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+/* visi misi css */
+.tentang_kami .visi .misi {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.judul {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tabel{
+  padding-top: 5%;
+  width: 70%;
+  margin: auto;
+}
+
+
+
+
