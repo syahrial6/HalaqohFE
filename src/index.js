@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import "../src/style/style.css"
+import "../src/style/style2.css"
+import "../src/style/sidebar.css"
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";

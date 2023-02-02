@@ -11,6 +11,7 @@ import TambahUser from "./pages/TambahUser";
 import User from "./pages/User";
 import EditUser from "./pages/EditUser";
 import ListWali from "./pages/ListWali";
+import Lihatsiswa from "./pages/Lihatsiswa";
 
 function App() {
   return (
@@ -23,11 +24,12 @@ function App() {
         <Route path="/view/:id" element={<ListWali/>} />
         <Route path="/dashboard/:id" element={<Guru/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/tambah_user" element={<TambahUser/>} />
+        <Route path="/guru/tambah" element={<TambahUser/>} />
         <Route path="/user" element={<User/>} />
         <Route path="/dashboard/:id/tambah" element={<Tambah/>} />
         <Route path="/dashboard/edit/:uuid" element={<Edit/>} />
         <Route path="/dashboard/edit_guru/:uuid" element={<EditUser/>} />
+        <Route path="/lihat_siswa" element={<Lihatsiswa/>} />
       </Routes>
     </BrowserRouter>
     </div>

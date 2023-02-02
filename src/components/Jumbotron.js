@@ -1,34 +1,24 @@
 import React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import { FiLogIn } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
-
 
 function Jumbotron() {
   return (
     <div>
-      <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={process.env.PUBLIC_URL + '/images/_MG_3538.JPG'}
-          alt="First slide"
-        />
-      </Carousel.Item>
-      <div className="mb-2">
-        <Button variant="secondary" size="lg">
-          <Link to={"/login"}>
-          <FiLogIn/>Login
-          </Link>
-        </Button>{' '}
-        <Button variant="secondary" size="lg">
-        <Link to={"/beranda"}>Lihat Hafalan
-        </Link>
-        </Button>
+      <div class="jumbotron">
+        <img src={process.env.PUBLIC_URL + '/images/jumbo.jpg'} alt="" />
+        <p class="selamat_datang">Selamat Datang Di Al-Fityan Kubu Raya</p>
+        <p class="judul2">Sekolah Boarding Terbaik Kalimantan Barat</p>
+        <div className='button'>
+          <Button color='#3282F6' href='/login' size="lg" active className='rounded-pill'><FiLogIn/>
+            Login
+          </Button>
+          <Button variant="success" size="lg" href='/beranda' active className='tombol_orangtua rounded-pill'>
+            Laman Orang Tua
+          </Button>
+        </div>
       </div>
-    </Carousel>
-    </div>
+      </div>
   )
 }
 

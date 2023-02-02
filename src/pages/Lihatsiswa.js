@@ -1,55 +1,36 @@
+import axios from 'axios';
+import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import {FiEdit2,FiDelete, FiRewind, FiPlus, FiPlusSquare } from 'react-icons/fi';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import { useDispatch, useSelector } from 'react-redux';
-import { getMe } from '../features/AuthSlices';
-import axios from 'axios';
-import Navigation2 from '../components/Navigation2';
-import * as dayjs from 'dayjs';
+import { FiEdit2,FiDelete } from 'react-icons/fi';
+import { Link} from 'react-router-dom';
 import updateLocale from "dayjs/plugin/updateLocale";
+import Layout from '../components/Layout';
 import swal from 'sweetalert';
 
-
-function Guru() {
+function Lihatsiswa() {
     const [siswa,setSiswa] = useState([]);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const {isError,user} = useSelector(((state)=> state.auth));
-    const {id} = useParams();
+    const [cari,setCari] = useState("");
+    
 
 
-    // format waktu untuk indonesia
-  dayjs.extend(updateLocale)
-
-  dayjs.updateLocale('en', {
-    weekdays: [
-      "Ahad", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
-    ],
-    months: [
-      "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
-      "Agustus", "September", "Oktober", "November", "Desember"
-    ]
-  })
-
+    
     useEffect(()=>{
-        dispatch(getMe());
-        getSiswa()
-    },[dispatch])
-    useEffect(()=>{
-        if (isError){
-            navigate("/login")
-        }
-    },[isError,navigate])
-
+      getSiswa()
+      
+    },[cari])
 
     const getSiswa = async()=>{
-        const response = await axios.get("http://localhost:5000/siswa")
-        setSiswa(response.data)
-    }
+      const response = await axios.get(`http://localhost:5000/siswa?search_query=${cari}`)
+      setSiswa(response?.data)
+      console.log(response?.data)
+      
+      
+  }
+
+    
     const deleteSiswa = async(uuid)=>{
-        
         swal({
           title: "Menghapus Data",
           text: "Apakah Kamu Yakin Akan Menghapus Data",
@@ -71,23 +52,38 @@ function Guru() {
         });
         
     }
+     // format waktu untuk indonesia
+  dayjs.extend(updateLocale)
+
+  dayjs.updateLocale('en', {
+    weekdays: [
+      "Ahad", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
+    ],
+    months: [
+      "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+      "Agustus", "September", "Oktober", "November", "Desember"
+    ]
+  })
   return (
-    <div>
-      <Navigation2/>
-      <div className='tabel'>
-        <h2>Halo.... {user && user.name}</h2>
-        {user && user.role === "admin" &&(
-        <Link to={'/dashboard'}><Button variant="success"><FiRewind/>Kembali ke Dashboard</Button></Link>
-  )}
-    |<Link to={`/dashboard/${id}/tambah`}><Button variant="primary"><FiPlusSquare/>Tambah Data</Button></Link>
-    <Table bordered>
-      <thead className='tabel_head'>
+    <Layout>
+        <div className='tabel'>
+            <label>Cari Siswa</label>
+            <input
+            type="search"
+            className="form-control mt-1"
+            placeholder="Masukkan Nama Siswa"
+            onChange={(e) => setCari(e.target.value)}
+            value={cari}
+          />
+          <br></br>
+      <Table bordered>
+      <thead>
         <tr>
           <th>NO</th>
           <th>Nama</th>
           <th>Kelas</th>
           <th>Guru</th>
-          <th colSpan={2}>Hafalan</th>
+          <th>Hafalan</th>
           <th>Update Terakhir</th>
           <th>Aksi</th>
         </tr>
@@ -100,7 +96,6 @@ function Guru() {
             <td>{siswa1.kelas}</td>
             <td>{siswa1.user.name}</td>
             <td>{siswa1.hafalan}</td>
-            <td>{siswa1.ayat}</td>
             <td>{dayjs(siswa1.updatedAt).format('dddd,DD/MMMM/YYYY')}</td>
             <td> 
               <Link to={`/dashboard/edit/${siswa1.uuid}`}><Button variant="primary"><FiEdit2/>Edit</Button></Link>
@@ -113,8 +108,8 @@ function Guru() {
       </tbody>
     </Table>
     </div>
-    </div>
+    </Layout>
   )
 }
 
-export default Guru
+export default Lihatsiswa

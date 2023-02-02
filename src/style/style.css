@@ -1,28 +1,10 @@
 
-/* Caraosel css */
-.carousel-inner {
-    max-height: 600px;
-    
-  }
-img{
-    max-height: 600px;
-    object-fit: cover;
-}
-  
-  .carousel-indicators img {
-    max-width: 100px;
-  }
-.mb-2{
-    z-index: 3;
-    position: relative;
-    margin: auto;
-    align-content: center;
-}
-a{
-    color: white;
-    text-decoration: none;
-}
+/* navbars */
 
+.navbar Nav.Link {
+  margin-bottom: 0;
+  
+}
 
 /* Login form css */
 
@@ -102,6 +84,15 @@ a{
   padding-top: 5%;
   width: 70%;
   margin: auto;
+}
+.tabel_head{
+  background-color:#3282F6;
+  color: white;
+}
+@media only screen and (max-width: 800px) {
+  .tabel{
+    width: 100%;
+  }
 }
 
 
