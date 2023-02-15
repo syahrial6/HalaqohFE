@@ -16,10 +16,13 @@
     "react-bootstrap-sidebar-menu": "^2.0.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-loading": "^2.0.3",
+    "react-print-component": "^0.1.8",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
+    "react-to-print": "^2.14.11",
     "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },

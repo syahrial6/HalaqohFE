@@ -13,6 +13,7 @@ function Tambah() {
   const [ayat,setAyat] = useState("");
   const [pesan,setPesan] = useState("");
   const [searchsurah,setSearchsurah] = useState([])
+  
 
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ function Tambah() {
           name : name,
           kelas : kelas,
           hafalan : hafalan,
-          ayat : ayat
+          ayat : ayat,
+          // siswaId : state uuid buat
         })
         swal({
           title: "Berhasil",

@@ -12,6 +12,8 @@ import User from "./pages/User";
 import EditUser from "./pages/EditUser";
 import ListWali from "./pages/ListWali";
 import Lihatsiswa from "./pages/Lihatsiswa";
+import Detail from "./pages/Detail";
+import Cetak from "./pages/Cetak";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/dashboard/edit/:uuid" element={<Edit/>} />
         <Route path="/dashboard/edit_guru/:uuid" element={<EditUser/>} />
         <Route path="/lihat_siswa" element={<Lihatsiswa/>} />
+        <Route path="/siswa/:id" element={<Detail/>} />
+        <Route path="/siswa/:id/cetak" element={<Cetak/>} />
       </Routes>
     </BrowserRouter>
     </div>

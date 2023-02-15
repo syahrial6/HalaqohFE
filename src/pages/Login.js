@@ -12,13 +12,12 @@ function Login() {
     const {user,isError,isLoading,isSuccess,message} = useSelector(
         (state)=> state.auth
     );
-
     useEffect(()=>{
         if(user && user.role === "admin"){
             navigate("/dashboard")
         }
         else if (user && user.role === "user"){
-            navigate(`/dashboard/${user.uuid}`)
+            navigate(`/dashboard/${user.id}`)
         }
         dispatch(reset())
     },[user,isSuccess,dispatch,navigate])

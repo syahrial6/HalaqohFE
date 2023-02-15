@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import {FiEdit2,FiDelete, FiRewind, FiPlus, FiPlusSquare } from 'react-icons/fi';
+import { FiEdit2, FiDelete, FiRewind, FiLogOut, FiPlusSquare } from 'react-icons/fi';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMe } from '../features/AuthSlices';
+import { getMe, Logout, reset } from '../features/AuthSlices';
 import axios from 'axios';
 import Navigation2 from '../components/Navigation2';
 import * as dayjs from 'dayjs';
@@ -13,14 +13,14 @@ import swal from 'sweetalert';
 
 
 function Guru() {
-    const [siswa,setSiswa] = useState([]);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const {isError,user} = useSelector(((state)=> state.auth));
-    const {id} = useParams();
+  const [siswa, setSiswa] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError, user } = useSelector(((state) => state.auth));
+  const { id } = useParams();
 
 
-    // format waktu untuk indonesia
+  // format waktu untuk indonesia
   dayjs.extend(updateLocale)
 
   dayjs.updateLocale('en', {
@@ -33,86 +33,69 @@ function Guru() {
     ]
   })
 
-    useEffect(()=>{
-        dispatch(getMe());
-        getSiswa()
-    },[dispatch])
-    useEffect(()=>{
-        if (isError){
-            navigate("/login")
-        }
-    },[isError,navigate])
+  useEffect(() => {
+    getSiswa()
+    dispatch(getMe());
+
+  }, [dispatch])
+  useEffect(() => {
+    if (isError) {
+      navigate("/login")
+    }
+  }, [isError, navigate])
 
 
-    const getSiswa = async()=>{
-        const response = await axios.get("http://localhost:5000/siswa")
-        setSiswa(response.data)
-    }
-    const deleteSiswa = async(uuid)=>{
-        
-        swal({
-          title: "Menghapus Data",
-          text: "Apakah Kamu Yakin Akan Menghapus Data",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then(async(willDelete) => {
-          if (willDelete) {
-            await axios.delete(`http://localhost:5000/siswa/${uuid}`)
-            swal("Data Berhasil Dihapus", {
-              icon: "success",
-            });
-            getSiswa();
-          } else {
-            swal("Data Tidak Jadi Dihapus");
-            getSiswa();
-          }
-        });
-        
-    }
+  const getSiswa = async () => {
+    const response = await axios.get(`http://localhost:5000/guru/siswa/${id}`)
+    setSiswa(response.data)
+  }
+  
+  const logout = () => {
+    dispatch(Logout())
+    dispatch(reset());
+    navigate("/")
+  }
   return (
     <div>
-      <Navigation2/>
+      <Navigation2 />
       <div className='tabel'>
         <h2>Halo.... {user && user.name}</h2>
-        {user && user.role === "admin" &&(
-        <Link to={'/dashboard'}><Button variant="success"><FiRewind/>Kembali ke Dashboard</Button></Link>
-  )}
-    |<Link to={`/dashboard/${id}/tambah`}><Button variant="primary"><FiPlusSquare/>Tambah Data</Button></Link>
-    <Table bordered>
-      <thead className='tabel_head'>
-        <tr>
-          <th>NO</th>
-          <th>Nama</th>
-          <th>Kelas</th>
-          <th>Guru</th>
-          <th colSpan={2}>Hafalan</th>
-          <th>Update Terakhir</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        {siswa.map((siswa1, index)=>(
-            <tr key={siswa1.uuid}>
-            <td>{index+1}</td>
-            <td>{siswa1.name}</td>
-            <td>{siswa1.kelas}</td>
-            <td>{siswa1.user.name}</td>
-            <td>{siswa1.hafalan}</td>
-            <td>{siswa1.ayat}</td>
-            <td>{dayjs(siswa1.updatedAt).format('dddd,DD/MMMM/YYYY')}</td>
-            <td> 
-              <Link to={`/dashboard/edit/${siswa1.uuid}`}><Button variant="primary"><FiEdit2/>Edit</Button></Link>
-               | <Link><Button variant="danger" onClick={()=>deleteSiswa(siswa1.uuid)}><FiDelete/>Delete</Button></Link>
-              </td>
-          </tr>
-        ))}
-          
-        
-      </tbody>
-    </Table>
-    </div>
+        {user && user.role === "admin" && (
+          <Link to={'/dashboard'}><Button variant="success"><FiRewind />Kembali ke Dashboard</Button></Link>
+        )}
+        <Table bordered>
+          <thead className='tabel_head'>
+            <tr>
+              <th>NO</th>
+              <th>Nama</th>
+              <th>Kelas</th>
+              <th>Guru</th>
+              <th colSpan={2}>Hafalan</th>
+              <th>Update Terakhir</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {siswa.map((siswa1, index) => (
+              <tr key={siswa1.uuid}>
+                <td>{index + 1}</td>
+                <td>{siswa1.name}</td>
+                <td>{siswa1.kelas}</td>
+                <td>{siswa1.user.name}</td>
+                <td>{siswa1.hafalan}</td>
+                <td>{siswa1.ayat}</td>
+                <td>{dayjs(siswa1.updatedAt).format('dddd,DD/MMMM/YYYY')}</td>
+                <td>
+                  <Link to={`/dashboard/edit/${siswa1.uuid}`}><Button variant="primary"><FiEdit2 />Edit</Button></Link>
+                </td>
+              </tr>
+            ))}
+
+
+          </tbody>
+        </Table>
+        <Button variant='danger'><a onClick={logout}><FiLogOut />Logout</a></Button>
+      </div>
     </div>
   )
 }

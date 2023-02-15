@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import Navigation from '../components/Navigation'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 function Beranda() {
   const [nama_guru, setnamaguru] = useState([]);
-
   useEffect(() => {
     getuser();
   }, [])
@@ -18,6 +18,11 @@ function Beranda() {
   const getuser = async () => {
     const response = await axios.get("http://localhost:5000/users/beranda")
     setnamaguru(response.data)
+  }
+  if (!nama_guru){
+    return (
+      <div>Loading...</div>
+    )
   }
 
   return (
