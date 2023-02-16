@@ -14,11 +14,11 @@ function User() {
     getuser()
   }, [])
   const getuser = async () => {
-    const response = await axios.get("http://localhost:5000/users")
+    const response = await axios.get("https://halaqoh2.my.id/users")
     setUser(response.data)
   }
   const deleteuser = async (userId) => {
-    await axios.delete(`http://localhost:5000/users/${userId}`)
+    await axios.delete(`https://halaqoh2.my.id/users/${userId}`)
     getuser();
   }
   return (

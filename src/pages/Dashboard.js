@@ -47,7 +47,7 @@ function Dashboard() {
   }
   // mendapatkan nama nama guru untuk card
   const getuser = async () => {
-    const response = await axios.get("http://localhost:5000/users")
+    const response = await axios.get("https://halaqoh2.my.id/users")
     response.data.shift()
     setnamaguru(response.data)
     

@@ -68,7 +68,7 @@ function Edit() {
   const editsiswa = async (e) => {
     e.preventDefault()
     try {
-      await axios.patch(`http://localhost:5000/siswa/${uuid}`, {
+      await axios.patch(`https://halaqoh2.my.id/siswa/${uuid}`, {
         name: name,
         kelas: kelas,
         hafalan: hafalan,
@@ -76,7 +76,7 @@ function Edit() {
         userId: userId
       })
       // menambahkan kedalam history //
-      await axios.post("http://localhost:5000/history/tambah", {
+      await axios.post("https://halaqoh2.my.id/history/tambah", {
         name: name,
         kelas: kelas,
         hafalan: hafalan,
@@ -104,7 +104,7 @@ function Edit() {
   }
 
   const getsurah = async () => {
-    const response = await axios.get("http://localhost:5000/surah")
+    const response = await axios.get("https://halaqoh2.my.id/surah")
     let result = response.data.map(data1 => {
       return {
         value: data1.nama_surah,
@@ -115,7 +115,7 @@ function Edit() {
   }
 
   const getuser = async () => {
-    const response = await axios.get("http://localhost:5000/users/beranda")
+    const response = await axios.get("https://halaqoh2.my.id/users/beranda")
     response.data.shift()
     let result_guru = response.data.map(data1 => {
       return {

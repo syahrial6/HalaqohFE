@@ -17,7 +17,7 @@ function EditUser() {
   useEffect(()=>{
     const getuserbyid = async()=>{
         try {
-            const response = await axios.get(`http://localhost:5000/users/${uuid}`)
+            const response = await axios.get(`https://halaqoh2.my.id/users/${uuid}`)
             setNama(response.data.name)
             setNamalengkap(response.data.nama_lengkap)
             setEmail(response.data.email)

@@ -18,7 +18,7 @@ function TambahUser() {
   const tambahuser = async(e)=>{
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/users",{
+      await axios.post("https://halaqoh2.my.id/users",{
         name : nama,
         nama_lengkap : nama_lengkap,
         email : email,

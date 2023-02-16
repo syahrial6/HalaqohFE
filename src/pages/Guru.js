@@ -46,7 +46,7 @@ function Guru() {
 
 
   const getSiswa = async () => {
-    const response = await axios.get(`http://localhost:5000/guru/siswa/${id}`)
+    const response = await axios.get(`https://halaqoh2.my.id/guru/siswa/${id}`)
     setSiswa(response.data)
   }
   

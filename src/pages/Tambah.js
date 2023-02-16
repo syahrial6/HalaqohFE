@@ -39,7 +39,7 @@ function Tambah() {
     const tambahsiswa = async(e)=>{
       e.preventDefault()
       try {
-        await axios.post("http://localhost:5000/siswa",{
+        await axios.post("https://halaqoh2.my.id/siswa",{
           name : name,
           kelas : kelas,
           hafalan : hafalan,
@@ -61,7 +61,7 @@ function Tambah() {
     }
 
     const getsurah = async()=>{
-      const response = await axios.get("http://localhost:5000/surah")
+      const response = await axios.get("https://halaqoh2.my.id/surah")
       let result = response.data.map(data1=>{
         return {
           value : data1.nama_surah,
