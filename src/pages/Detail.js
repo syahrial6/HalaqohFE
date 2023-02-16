@@ -25,7 +25,7 @@ const Detail = React.forwardRef((props, ref) => {
 
 
   const getHistory = async () => {
-    const response = await axios.get(`http://halaqoh2.my.id/history/siswa/${id}`);
+    const response = await axios.get(`https://halaqoh2.my.id/history/siswa/${id}`);
     console.log(response.data)
     setSiswa(response.data)
     setNamaSiswa(response.data[0])

@@ -16,7 +16,7 @@ function Beranda() {
   }, [])
 
   const getuser = async () => {
-    const response = await axios.get("http://halaqoh2.my.id/users/beranda")
+    const response = await axios.get("https://halaqoh2.my.id/users/beranda")
     setnamaguru(response.data)
   }
   if (!nama_guru){
