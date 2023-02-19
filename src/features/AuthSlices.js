@@ -11,9 +11,14 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser",async(user,thunkAPI)=>{
     try {
-        const response = await axios.post("https://halaqoh2.my.id/login",{
+        const response = await axios.post("http://localhost:5000/login",{
             email : user.email,
             password : user.password
+        },{
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+              },
         });
         return response.data
     } catch (error) {
@@ -27,7 +32,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser",async(user,thunkAPI)=
 
 export const getMe = createAsyncThunk("user/getme",async(_,thunkAPI)=>{
     try {
-        const response = await axios.get("https://halaqoh2.my.id/me");
+        const response = await axios.get("http://localhost:5000/me");
         return response.data
     } catch (error) {
         if (error.response){

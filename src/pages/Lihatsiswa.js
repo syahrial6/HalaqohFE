@@ -22,7 +22,7 @@ function Lihatsiswa() {
     },[cari])
 
     const getSiswa = async()=>{
-      const response = await axios.get(`http://localhost:5000/siswa?search_query=${cari}`)
+      const response = await axios.get(`https://halaqoh2.my.id?search_query=${cari}`)
       setSiswa(response?.data)
       console.log(response?.data)
       
@@ -40,7 +40,7 @@ function Lihatsiswa() {
         })
         .then(async(willDelete) => {
           if (willDelete) {
-            await axios.delete(`http://localhost:5000/siswa/${uuid}`)
+            await axios.delete(`hhttps://halaqoh2.my.id/siswa/${uuid}`)
             swal("Data Berhasil Dihapus", {
               icon: "success",
             });
