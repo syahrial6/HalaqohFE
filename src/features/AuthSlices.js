@@ -16,7 +16,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser",async(user,thunkAPI)=
             password : user.password
         },{
             headers: {
-                "content-type":"Authorization"
+                'Access-Control-Allow-Origin': '*'
               }
         });
         return response.data
