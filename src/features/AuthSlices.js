@@ -17,7 +17,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser",async(user,thunkAPI)=
         },{
             headers: {
                 "content-type":"Authorization"
-              },
+              }
         });
         return response.data
     } catch (error) {
