@@ -29,7 +29,7 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(getMe());
-//     getuser();
+    getuser();
   }, [dispatch])
   useEffect(() => {
     if (isError) {
