@@ -28,7 +28,7 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    dispatch(getMe());
+   // dispatch(getMe());
     getuser();
   }, [dispatch])
   useEffect(() => {
