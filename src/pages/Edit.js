@@ -37,7 +37,7 @@ function Edit() {
 
   const getsiswabyid = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/siswa/${uuid}`)
+      const response = await axios.get(`https://halaqoh2.my.id/siswa/${uuid}`)
       setName(response.data.name)
       setKelas(response.data.kelas)
       setHafalan(response.data.hafalan)
