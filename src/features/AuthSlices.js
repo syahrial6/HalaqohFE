@@ -14,10 +14,6 @@ export const LoginUser = createAsyncThunk("user/LoginUser",async(user,thunkAPI)=
         const response = await axios.post("https://halaqoh2.my.id/login",{
             email : user.email,
             password : user.password
-        },{
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-              }
         });
         return response.data
     } catch (error) {
