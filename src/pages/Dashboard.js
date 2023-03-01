@@ -31,7 +31,7 @@ function Dashboard() {
   useEffect(() => {
     dispatch(getMe());
     getuser();
-  }, [dispatch])
+  }, [])
   useEffect(() => {
     if (isError) {
       navigate("/login")
