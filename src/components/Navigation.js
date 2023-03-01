@@ -28,8 +28,7 @@ const Navigation = () => {
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="#tentang_kami">Tentang Kami</Nav.Link>
-                  <Nav.Link href="/login">Login<FiLogIn/></Nav.Link>
+                  <Nav.Link href="#tentangkami">Tentang Kami</Nav.Link>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>

@@ -12,6 +12,7 @@ import { getMe } from '../features/AuthSlices';
 import { Logout, reset } from "../features/AuthSlices"
 import axios from 'axios';
 import Layout from '../components/Layout';
+import url from '../features/url';
 
 
 
@@ -47,7 +48,7 @@ function Dashboard() {
   }
   // mendapatkan nama nama guru untuk card
   const getuser = async () => {
-    const response = await axios.get("https://halaqoh2.my.id/users")
+    const response = await axios.get(`${url}/users`)
     response.data.shift()
     setnamaguru(response.data)
     
@@ -74,7 +75,7 @@ function Dashboard() {
                 <Card.Text>
                   Kategori 5 Juz Kelas 9
                 </Card.Text>
-                <Link to={`/dashboard/${guru.uuid}`}>
+                <Link to={`/dashboard/${guru.id}`}>
                   <Button variant="primary">Lihat Detail</Button>{' '}
                 </Link>
               </Card.Body>

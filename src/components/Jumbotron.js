@@ -8,7 +8,7 @@ function Jumbotron() {
       <div class="jumbotron">
         <img src={process.env.PUBLIC_URL + '/images/jumbo.jpg'} alt="" />
         <p class="selamat_datang">Selamat Datang Di Al-Fityan Kubu Raya</p>
-        <p class="judul2">Sekolah Boarding Terbaik Kalimantan Barat</p>
+        <p class="judul2">Sekolah Boarding Islami Kalimantan Barat</p>
         <div className='button'>
           <Button color='#3282F6' href='/login' size="lg" active className='rounded-pill'><FiLogIn/>
             Login

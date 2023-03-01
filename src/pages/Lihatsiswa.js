@@ -8,6 +8,7 @@ import { Link} from 'react-router-dom';
 import updateLocale from "dayjs/plugin/updateLocale";
 import Layout from '../components/Layout';
 import swal from 'sweetalert';
+import url from '../features/url';
 
 function Lihatsiswa() {
     const [siswa,setSiswa] = useState([]);
@@ -22,9 +23,8 @@ function Lihatsiswa() {
     },[cari])
 
     const getSiswa = async()=>{
-      const response = await axios.get(`https://halaqoh2.my.id?search_query=${cari}`)
+      const response = await axios.get(`${url}/siswa?search_query=${cari}`)
       setSiswa(response?.data)
-      console.log(response?.data)
       
       
   }
@@ -44,9 +44,6 @@ function Lihatsiswa() {
             swal("Data Berhasil Dihapus", {
               icon: "success",
             });
-            getSiswa();
-          } else {
-            swal("Data Tidak Jadi Dihapus");
             getSiswa();
           }
         });
@@ -76,6 +73,9 @@ function Lihatsiswa() {
             value={cari}
           />
           <br></br>
+          {siswa.length === 0 && (
+        <h2>Data Tidak Ditemukan</h2>
+      )}
       <Table bordered>
       <thead>
         <tr>

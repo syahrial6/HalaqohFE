@@ -14,6 +14,7 @@ import ListWali from "./pages/ListWali";
 import Lihatsiswa from "./pages/Lihatsiswa";
 import Detail from "./pages/Detail";
 import Cetak from "./pages/Cetak";
+import Notfound from "./pages/404";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/lihat_siswa" element={<Lihatsiswa/>} />
         <Route path="/siswa/:id" element={<Detail/>} />
         <Route path="/siswa/:id/cetak" element={<Cetak/>} />
+        <Route path="*" element={<Notfound/>} />
       </Routes>
     </BrowserRouter>
     </div>

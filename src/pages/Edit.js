@@ -6,6 +6,7 @@ import { getMe } from '../features/AuthSlices';
 import Select from 'react-select'
 import swal from 'sweetalert';
 import Loading from '../components/Loading';
+import url from '../features/url';
 
 function Edit() {
   const [name, setName] = useState("");
@@ -37,7 +38,7 @@ function Edit() {
 
   const getsiswabyid = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/siswa/${uuid}`)
+      const response = await axios.get(`${url}/siswa/${uuid}`)
       setName(response.data.name)
       setKelas(response.data.kelas)
       setHafalan(response.data.hafalan)
@@ -68,7 +69,7 @@ function Edit() {
   const editsiswa = async (e) => {
     e.preventDefault()
     try {
-      await axios.patch(`https://halaqoh2.my.id/siswa/${uuid}`, {
+      await axios.patch(`${url}/siswa/${uuid}`, {
         name: name,
         kelas: kelas,
         hafalan: hafalan,
@@ -76,7 +77,7 @@ function Edit() {
         userId: userId
       })
       // menambahkan kedalam history //
-      await axios.post("https://halaqoh2.my.id/history/tambah", {
+      await axios.post(`${url}/history/tambah`, {
         name: name,
         kelas: kelas,
         hafalan: hafalan,
@@ -104,7 +105,7 @@ function Edit() {
   }
 
   const getsurah = async () => {
-    const response = await axios.get("https://halaqoh2.my.id/surah")
+    const response = await axios.get(`${url}/surah`)
     let result = response.data.map(data1 => {
       return {
         value: data1.nama_surah,
@@ -115,7 +116,7 @@ function Edit() {
   }
 
   const getuser = async () => {
-    const response = await axios.get("https://halaqoh2.my.id/users/beranda")
+    const response = await axios.get(`${url}/users/beranda`)
     response.data.shift()
     let result_guru = response.data.map(data1 => {
       return {

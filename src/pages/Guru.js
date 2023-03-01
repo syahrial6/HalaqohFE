@@ -10,6 +10,7 @@ import Navigation2 from '../components/Navigation2';
 import * as dayjs from 'dayjs';
 import updateLocale from "dayjs/plugin/updateLocale";
 import swal from 'sweetalert';
+import url from '../features/url';
 
 
 function Guru() {
@@ -46,7 +47,7 @@ function Guru() {
 
 
   const getSiswa = async () => {
-    const response = await axios.get(`https://halaqoh2.my.id/guru/siswa/${id}`)
+    const response = await axios.get(`${url}/guru/siswa/${id}`)
     setSiswa(response.data)
   }
   
@@ -79,7 +80,7 @@ function Guru() {
             {siswa.map((siswa1, index) => (
               <tr key={siswa1.uuid}>
                 <td>{index + 1}</td>
-                <td>{siswa1.name}</td>
+                <td><Link to={`/siswa/${siswa1.id}/cetak`}>{siswa1.name}</Link></td>
                 <td>{siswa1.kelas}</td>
                 <td>{siswa1.user.name}</td>
                 <td>{siswa1.hafalan}</td>

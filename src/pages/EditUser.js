@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import url from '../features/url';
 
 function EditUser() {
     const [nama,setNama] =useState("");
@@ -17,7 +18,7 @@ function EditUser() {
   useEffect(()=>{
     const getuserbyid = async()=>{
         try {
-            const response = await axios.get(`https://halaqoh2.my.id/users/${uuid}`)
+            const response = await axios.get(`${url}/users/${uuid}`)
             setNama(response.data.name)
             setNamalengkap(response.data.nama_lengkap)
             setEmail(response.data.email)
@@ -32,7 +33,7 @@ function EditUser() {
   const edituser = async(e)=>{
     e.preventDefault()
     try {
-      await axios.patch(`http://localhost:5000/users/${uuid}`,{
+      await axios.patch(`${url}/users/${uuid}`,{
         name : nama,
         nama_lengkap : nama_lengkap,
         email : email,

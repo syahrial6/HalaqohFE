@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import * as dayjs from 'dayjs';
 import updateLocale from "dayjs/plugin/updateLocale";
+import url from '../features/url';
 
 
 function ListWali() {
@@ -37,11 +38,15 @@ function ListWali() {
 
 
   const getSiswa = async () => {
-    const response = await axios.get(`https://halaqoh2.my.id/guru/siswa/${id}`)
+    const response = await axios.get(`${url}/guru/siswa/${id}`)
     setSiswa(response.data)
     setnamaguru(response.data[0].user.name)
 
 
+  }
+
+  if (!siswa) {
+    return <div>Loading...</div>;
   }
 
 

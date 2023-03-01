@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../components/Layout';
+import url from '../features/url';
 
 function User() {
   const [user, setUser] = useState([]);
@@ -14,11 +15,11 @@ function User() {
     getuser()
   }, [])
   const getuser = async () => {
-    const response = await axios.get("https://halaqoh2.my.id/users")
+    const response = await axios.get(`${url}/users`)
     setUser(response.data)
   }
   const deleteuser = async (userId) => {
-    await axios.delete(`https://halaqoh2.my.id/users/${userId}`)
+    await axios.delete(`${url}/users/${userId}`)
     getuser();
   }
   return (

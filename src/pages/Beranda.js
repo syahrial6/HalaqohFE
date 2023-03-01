@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import url from '../features/url'
 
 
 function Beranda() {
@@ -16,7 +16,8 @@ function Beranda() {
   }, [])
 
   const getuser = async () => {
-    const response = await axios.get("https://halaqoh2.my.id/users/beranda")
+    const response = await axios.get(`${url}/users/beranda`)
+    response.data.shift()
     setnamaguru(response.data)
   }
   if (!nama_guru){

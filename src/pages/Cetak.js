@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import Detail from './Detail';
 import Button from 'react-bootstrap/Button';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiPrinter } from 'react-icons/fi';
 const Cetak = React.forwardRef((props, ref) => {
     const componentRef = useRef();
             const handlePrint = useReactToPrint({
@@ -10,7 +10,7 @@ const Cetak = React.forwardRef((props, ref) => {
   });
     return (
         <div>
-            <Button color='#3282F6' size="lg" active className='rounded-pill' onClick={handlePrint}><FiLogIn/>
+            <Button color='#3282A6' size="lg" active className='rounded-pill' onClick={handlePrint}><FiPrinter/>
             Cetak Data
           </Button>
             <Detail ref={componentRef}/>
